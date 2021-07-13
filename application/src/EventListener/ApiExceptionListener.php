@@ -27,8 +27,6 @@ class ApiExceptionListener
         $requestMethod = $request->getMethod();
         $requestContent = $request->getContent();
 
-        $request->attributes->set('request_id', uniqid(md5($requestContent) . '-', true));
-
         $this->logger->info(
             'Request',
             [

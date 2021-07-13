@@ -44,16 +44,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomeController extends AbstractController
 {
     /**
-     * @var ParameterBagInterface
-     */
-    private ParameterBagInterface $parameterBag;
-
-    public function __construct(ParameterBagInterface $parameterBag)
-    {
-        $this->parameterBag = $parameterBag;
-    }
-
-    /**
      * @OA\Get(
      *     path="/",
      *     tags={"API"},
@@ -72,9 +62,8 @@ class HomeController extends AbstractController
      */
     public function home(): Response
     {
-        echo $this->parameterBag->get('secret_key');
         return $this->json([
-            'name' => 'SocialTech Restfull api',
+            'name' => 'SocialTech Rest full api',
         ]);
     }
 }
