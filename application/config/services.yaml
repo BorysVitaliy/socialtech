@@ -5,7 +5,7 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     locale: 'en'
-    secret_key: '%env(JWT_SECRET_KEY)%' # required for token creation
+    format_auth_file: 'json'
 
 services:
     # default configuration for services in *this* file
@@ -27,5 +27,7 @@ services:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
             - { name: kernel.event_listener, event: kernel.request }
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+
+    App\Model\User\Repository\UserRepository:
+        arguments:
+            $format: '%format_auth_file%'

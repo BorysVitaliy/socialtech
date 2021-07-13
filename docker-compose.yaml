@@ -16,6 +16,7 @@ services:
       dockerfile: php-fpm.docker
     volumes:
       - ./application:/app
+      - ./auth-storage:/app/var/storage/auth
     depends_on:
       - rabbitmq
   app-php-cli:
@@ -24,9 +25,11 @@ services:
       dockerfile: php-cli.docker
     volumes:
       - ./application:/app
-      - composer:/root/.composer/cache
     depends_on:
       - rabbitmq
+    stdin_open: true
+    tty: true
+    command: composer install --ignore-platform-reqs
   rabbitmq:
     image: rabbitmq:3.8-management-alpine
     ports:
@@ -37,4 +40,3 @@ services:
 
 volumes:
   rabbitmq-data:
-  composer:
