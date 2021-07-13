@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\EventListener;
 
-use Carid\ProductSource\App\Stopwatch\StopwatchInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpFoundation\JsonResponse;
