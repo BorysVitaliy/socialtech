@@ -11,6 +11,4 @@ class AuthView
     public string $nickName;
 
     public string $passwordHash;
-
-    public string $role;
 }

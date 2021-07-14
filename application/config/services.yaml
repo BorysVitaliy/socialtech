@@ -6,6 +6,8 @@
 parameters:
     locale: 'en'
     format_auth_file: 'json'
+    auth_created_at_format: !php/const '\DateTimeInterface::ATOM'
+    standard_date_format : 'd-m-Y'
 
 services:
     # default configuration for services in *this* file
@@ -31,3 +33,12 @@ services:
     App\Model\User\Repository\UserRepository:
         arguments:
             $format: '%format_auth_file%'
+
+    App\Model\User\Repository\Hydrator\UserHydrator:
+        arguments:
+            $createdFormat: '%auth_created_at_format%'
+
+    App\ReadModel\User\UserFetcher:
+        arguments:
+            $dateFormat: '%standard_date_format%'
+

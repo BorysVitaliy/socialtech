@@ -12,6 +12,13 @@ use Exception;
 
 class UserHydrator implements UserHydratorInterface
 {
+    private string $createdFormat;
+
+    public function __construct(string $createdFormat)
+    {
+        $this->createdFormat = $createdFormat;
+    }
+
     /**
      * @param array $user
      * @return User
@@ -22,7 +29,7 @@ class UserHydrator implements UserHydratorInterface
         return new User(
             new Id($user['id']),
             $user['nickName'],
-            new DateTimeImmutable(),
+            new DateTimeImmutable($user['createdAt']),
             new Name(
                 $user['firstName'],
                 $user['lastName']
@@ -42,7 +49,8 @@ class UserHydrator implements UserHydratorInterface
             'nickName' => $user->getNickName(),
             'firstName' => $user->getName()->getFirst(),
             'lastName' => $user->getName()->getLast(),
-            'password' => $user->getPasswordHash()
+            'password' => $user->getPasswordHash(),
+            'createdAt' => $user->getCreatedAt()->format($this->createdFormat)
         ];
     }
 }

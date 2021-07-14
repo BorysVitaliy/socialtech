@@ -12,9 +12,14 @@ class UserFetcher
 {
     private UserRepositoryInterface $repository;
 
-    public function __construct(UserRepositoryInterface $repository)
-    {
+    private string $dateFormat;
+
+    public function __construct(
+        UserRepositoryInterface $repository,
+        string $dateFormat
+    ) {
         $this->repository = $repository;
+        $this->dateFormat = $dateFormat;
     }
 
     public function findForAuthByUserName(string $userName): AuthView
@@ -24,7 +29,6 @@ class UserFetcher
         $user->id = $userEntity->getId()->getValue();
         $user->nickName = $userEntity->getNickName();
         $user->passwordHash = $userEntity->getPasswordHash();
-        $user->role = '';
 
         return $user;
     }
@@ -36,6 +40,7 @@ class UserFetcher
         $user->id = $userEntity->getId()->getValue();
         $user->fullName = $userEntity->getName()->getFull();
         $user->nickName = $userEntity->getNickName();
+        $user->createdAt = $userEntity->getCreatedAt()->format($this->dateFormat);
 
         return $user;
     }

@@ -11,4 +11,6 @@ class ProfileView
     public string $nickName;
 
     public string $fullName;
+
+    public string $createdAt;
 }

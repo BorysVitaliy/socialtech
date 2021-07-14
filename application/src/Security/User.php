@@ -14,18 +14,14 @@ class User implements UserInterface
 
     private string $password;
 
-    private string $role;
-
     public function __construct(
         string $id,
         string $nickName,
-        string $password,
-        string $role
+        string $password
     ) {
         $this->id = $id;
         $this->nickName = $nickName;
         $this->password = $password;
-        $this->role = $role;
     }
 
     public function getId(): string
@@ -50,7 +46,7 @@ class User implements UserInterface
 
     public function getRoles(): array
     {
-        return [$this->role];
+        return [];
     }
 
     public function getSalt(): ?string

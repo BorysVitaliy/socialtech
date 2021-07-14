@@ -64,8 +64,7 @@ class UserProvider implements UserProviderInterface
         return new User(
             $user->id,
             $username,
-            $user->passwordHash ?: '',
-            $user->role ?: ''
+            $user->passwordHash ?: ''
         );
     }
 }
