@@ -41,6 +41,7 @@ services:
       dockerfile: php-cli.docker
     volumes:
       - ./application:/app
+      - ./storage:/app/var/storage
     restart: on-failure
     depends_on:
       - app-php-cli
