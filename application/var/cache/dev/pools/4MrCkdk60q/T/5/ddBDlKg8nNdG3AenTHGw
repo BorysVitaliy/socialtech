@@ -1,0 +1,33 @@
+<?php //App_Model_User_UseCase_Registration_Request_Command
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Model\\User\\UseCase\\Registration\\Request\\Command',
+                'firstName',
+                'lastName',
+                'nickName',
+                'password',
+            ],
+            'attributesMetadata' => [
+                [
+                    'firstName' => $o[1],
+                    'lastName' => $o[2],
+                    'nickName' => $o[3],
+                    'password' => $o[4],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

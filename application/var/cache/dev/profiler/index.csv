@@ -1,0 +1,15 @@
+183211,192.168.96.1,POST,http://localhost:8081/api/track,1626358778,,200
+7de13e,192.168.96.1,POST,http://localhost:8081/api/track,1626358779,,200
+ffec6b,192.168.96.1,POST,http://localhost:8081/api/track,1626358779,,200
+259e2d,192.168.96.1,POST,http://localhost:8081/api/track,1626358780,,200
+13ac5e,192.168.96.1,POST,http://localhost:8081/api/track,1626358780,,200
+9f2c12,192.168.96.1,POST,http://localhost:8081/api/auth/registration,1626358839,,201
+823b4a,192.168.96.1,POST,http://localhost:8081/api/track,1626358894,,200
+ec047c,192.168.96.1,POST,http://localhost:8081/api/track,1626358970,,200
+de3af1,192.168.96.1,POST,http://localhost:8081/api/track,1626358970,,200
+e49563,192.168.96.1,POST,http://localhost:8081/api/track,1626358971,,200
+9d5586,192.168.96.1,POST,http://localhost:8081/api/track,1626358971,,200
+d13426,192.168.96.1,GET,http://localhost:8081/,1626360074,,200
+3f00f8,192.168.96.1,GET,http://localhost:8081/favicon.ico,1626360075,,404
+c01f68,192.168.96.1,GET,http://localhost:8081/favicon.ico,1626360075,,404
+74b502,192.168.96.1,GET,http://localhost:8081/favicon.ico,1626360076,,404

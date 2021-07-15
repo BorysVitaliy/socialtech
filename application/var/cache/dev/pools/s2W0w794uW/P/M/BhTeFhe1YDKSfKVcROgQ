@@ -1,0 +1,125 @@
+<?php //App%255CController%255CApi%255CHomeController%2523home
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['OpenApi\\Annotations\\Get'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('OpenApi\\Annotations\\Get')),
+        clone ($p['OpenApi\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('OpenApi\\Annotations\\Response')),
+        clone ($p['OpenApi\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('OpenApi\\Context')),
+        clone ($p['OpenApi\\Annotations\\JsonContent'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('OpenApi\\Annotations\\JsonContent')),
+        clone ($p['OpenApi\\Annotations\\Property'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('OpenApi\\Annotations\\Property')),
+        clone $p['OpenApi\\Context'],
+        clone $p['OpenApi\\Context'],
+        clone $p['OpenApi\\Context'],
+        clone ($p['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'path' => [
+                '/',
+            ],
+            'tags' => [
+                [
+                    'API',
+                ],
+            ],
+            'description' => [
+                'API Home',
+                'Success response',
+            ],
+            'responses' => [
+                [
+                    $o[1],
+                ],
+            ],
+            '_context' => [
+                $o[7],
+                $o[2],
+                3 => $o[6],
+                $o[5],
+            ],
+            'response' => [
+                1 => '200',
+            ],
+            '_unmerged' => [
+                1 => [
+                    $o[3],
+                ],
+            ],
+            'filename' => [
+                2 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                5 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+            ],
+            'line' => [
+                2 => 977,
+                5 => 977,
+                977,
+                977,
+            ],
+            'method' => [
+                2 => 'Annotation',
+                5 => 'Annotation',
+                'Annotation',
+                'Annotation',
+            ],
+            'class' => [
+                2 => 'DocParser',
+                5 => 'DocParser',
+                'DocParser',
+                'DocParser',
+            ],
+            'namespace' => [
+                2 => 'Doctrine\\Common\\Annotations',
+                5 => 'Doctrine\\Common\\Annotations',
+                'Doctrine\\Common\\Annotations',
+                'Doctrine\\Common\\Annotations',
+            ],
+            'annotations' => [
+                2 => [
+                    $o[1],
+                ],
+                5 => [
+                    $o[4],
+                ],
+                [
+                    $o[3],
+                ],
+                [
+                    $o[0],
+                ],
+            ],
+            'properties' => [
+                3 => [
+                    $o[4],
+                ],
+            ],
+            'type' => [
+                3 => 'object',
+                'string',
+            ],
+            'property' => [
+                4 => 'name',
+            ],
+        ],
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                8 => '',
+            ],
+            'name' => [
+                8 => 'home',
+            ],
+            'methods' => [
+                8 => [
+                    'GET',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[8],
+    ],
+    []
+); }];

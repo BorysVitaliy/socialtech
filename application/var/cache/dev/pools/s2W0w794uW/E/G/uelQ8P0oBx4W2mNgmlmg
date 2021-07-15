@@ -1,0 +1,118 @@
+<?php //App%255CController%255CApi%255CUser%255CAnonymousCreatorController%2523create
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['OpenApi\\Annotations\\Get'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('OpenApi\\Annotations\\Get')),
+        clone ($p['OpenApi\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('OpenApi\\Annotations\\Response')),
+        clone ($p['OpenApi\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('OpenApi\\Context')),
+        clone $p['OpenApi\\Annotations\\Response'],
+        clone $p['OpenApi\\Context'],
+        clone ($p['OpenApi\\Annotations\\JsonContent'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('OpenApi\\Annotations\\JsonContent')),
+        clone $p['OpenApi\\Context'],
+        clone $p['OpenApi\\Context'],
+        clone ($p['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'path' => [
+                '/anonymous/create',
+            ],
+            'tags' => [
+                [
+                    'Auth',
+                ],
+            ],
+            'responses' => [
+                [
+                    $o[1],
+                    $o[3],
+                ],
+            ],
+            '_context' => [
+                $o[7],
+                $o[2],
+                3 => $o[4],
+                5 => $o[6],
+            ],
+            'response' => [
+                1 => 201,
+                3 => 400,
+            ],
+            'description' => [
+                1 => 'Success response',
+                3 => 'Errors',
+            ],
+            'filename' => [
+                2 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                4 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                6 => '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                '/app/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+            ],
+            'line' => [
+                2 => 977,
+                4 => 977,
+                6 => 977,
+                977,
+            ],
+            'method' => [
+                2 => 'Annotation',
+                4 => 'Annotation',
+                6 => 'Annotation',
+                'Annotation',
+            ],
+            'class' => [
+                2 => 'DocParser',
+                4 => 'DocParser',
+                6 => 'DocParser',
+                'DocParser',
+            ],
+            'namespace' => [
+                2 => 'Doctrine\\Common\\Annotations',
+                4 => 'Doctrine\\Common\\Annotations',
+                6 => 'Doctrine\\Common\\Annotations',
+                'Doctrine\\Common\\Annotations',
+            ],
+            'annotations' => [
+                2 => [
+                    $o[1],
+                ],
+                4 => [
+                    $o[3],
+                ],
+                6 => [
+                    $o[5],
+                ],
+                [
+                    $o[0],
+                ],
+            ],
+            '_unmerged' => [
+                3 => [
+                    $o[5],
+                ],
+            ],
+            'ref' => [
+                5 => '#/components/schemas/ErrorModel',
+            ],
+        ],
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                8 => '/api/anonymous/create',
+            ],
+            'name' => [
+                8 => 'anonymous.create',
+            ],
+            'methods' => [
+                8 => [
+                    'GET',
+                ],
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[8],
+    ],
+    []
+); }];
