@@ -31,3 +31,7 @@ Generate Swagger docs
 ```
 docker-compose exec app-php-fpm php bin/console api:docs
 ```
+
+### Дополнение
+Для того, чтобы трекать действия не авторизованного пользователя, необходимо создать ему uuid (с помощью роута - /api/anonymous/create),
+затем этот uuid передавать в заголовке с именем x-social-uuid на каждом из следующих запросов.
