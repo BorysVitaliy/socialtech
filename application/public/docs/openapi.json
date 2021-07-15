@@ -180,6 +180,87 @@
                     }
                 ]
             }
+        },
+        "/track": {
+            "post": {
+                "tags": [
+                    "Tracker"
+                ],
+                "operationId": "6c0bfef46729a9f19b70a25d1a311efa",
+                "parameters": [
+                    {
+                        "name": "x-social-uuid",
+                        "in": "header",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "sourceLabel"
+                                ],
+                                "properties": {
+                                    "source": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "social-uuid": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": [],
+                        "OAuth2": []
+                    }
+                ]
+            }
+        },
+        "/anonymous/create": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "2b3b634a2f9744ce5863eccb818df644",
+                "responses": {
+                    "201": {
+                        "description": "Success response"
+                    },
+                    "400": {
+                        "description": "Errors",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ErrorModel"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "components": {

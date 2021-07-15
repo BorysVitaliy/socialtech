@@ -6,8 +6,10 @@
 parameters:
     locale: 'en'
     format_auth_file: 'json'
+    format_track_storage_file: 'json'
     auth_created_at_format: !php/const '\DateTimeInterface::ATOM'
     standard_date_format : 'd-m-Y'
+    track_storage_path: '%env(resolve:TRACKING_STORAGE_PATH)%'
 
 services:
     # default configuration for services in *this* file
@@ -32,7 +34,7 @@ services:
 
     App\Model\User\Repository\UserRepository:
         arguments:
-            $format: '%format_auth_file%'
+            $formatFile: '%format_auth_file%'
 
     App\Model\User\Repository\Hydrator\UserHydrator:
         arguments:
@@ -41,4 +43,18 @@ services:
     App\ReadModel\User\UserFetcher:
         arguments:
             $dateFormat: '%standard_date_format%'
+
+    App\Service\AnonymousUser\AnonymousUser:
+        arguments:
+            $formatFile: '%format_auth_file%'
+
+    App\Queue\Consumer\User\TrackActionHandler:
+        arguments:
+            $trackStoragePath: '%track_storage_path%'
+            $formatStorage :  '%format_track_storage_file%'
+            $trackElementDelimiter: ','
+
+    SocialTech\StorageInterface:
+        autowire: true
+        class: SocialTech\SlowStorage
 

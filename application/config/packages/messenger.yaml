@@ -10,5 +10,5 @@ framework:
                     queues:
                         tracker: ~
         routing:
-            App\Message\Tracker: tracker
+            App\Queue\Message\Message\TrackAction: tracker
 

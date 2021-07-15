@@ -50,7 +50,7 @@ class UserFetcher
         $userEntity = $this->repository->getByNickName($userName);
 
         if (!$userEntity) {
-            throw new NotFoundException('User is not found1');
+            throw new NotFoundException('User is not found');
         }
 
         return $userEntity;

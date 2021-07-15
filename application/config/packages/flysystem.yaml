@@ -5,3 +5,7 @@ flysystem:
             adapter: 'local'
             options:
                 directory: '%kernel.project_dir%/var/storage/auth'
+        anonymous-user.storage:
+            adapter: 'local'
+            options:
+                directory: '%kernel.project_dir%/var/storage/anonymous-user'

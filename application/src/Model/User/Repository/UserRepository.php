@@ -31,13 +31,13 @@ class UserRepository implements UserRepositoryInterface
         UserHydratorInterface $hydrator,
         SerializerInterface $serializer,
         DecoderInterface $decoder,
-        string $format
+        string $formatFile
     ) {
         $this->hydrator = $hydrator;
         $this->authStorage = $authStorage;
         $this->serializer = $serializer;
         $this->decoder = $decoder;
-        $this->format = $format;
+        $this->format = $formatFile;
     }
 
     /**

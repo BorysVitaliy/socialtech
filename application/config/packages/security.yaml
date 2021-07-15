@@ -28,4 +28,6 @@ security:
     access_control:
         - { path: ^/api/auth/registration, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/track, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/anonymous/create, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
