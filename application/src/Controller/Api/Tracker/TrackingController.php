@@ -46,7 +46,7 @@ class TrackingController extends AbstractController
      *         @OA\JsonContent(
      *             type="object",
      *             required={"sourceLabel"},
-     *             @OA\Property(property="source", type="string"),
+     *             @OA\Property(property="sourceLabel", type="string"),
      *         ),
      *     ),
      *     @OA\Parameter(

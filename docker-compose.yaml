@@ -19,7 +19,6 @@ services:
       - ./storage:/app/var/storage
     depends_on:
       - rabbitmq
-    command: chmod -R 755 storage/
   app-php-cli:
     build:
       context: ./docker
@@ -36,17 +35,17 @@ services:
       - 127.0.0.1:5672:5672
     volumes:
       - rabbitmq-data:/var/lib/rabbitmq
-#  queue-tracker-worker:
-#    build:
-#      context: ./docker
-#      dockerfile: php-cli.docker
-#    volumes:
-#      - ./application:/app
-#    restart: on-failure
-#    depends_on:
-#      - app-php-cli
-#      - rabbitmq
-#    command: php /app/bin/console messenger:consume tracker -vv
+  queue-tracker-worker:
+    build:
+      context: ./docker
+      dockerfile: php-cli.docker
+    volumes:
+      - ./application:/app
+    restart: on-failure
+    depends_on:
+      - app-php-cli
+      - rabbitmq
+    command: php /app/bin/console messenger:consume tracker -vv
 
 volumes:
   rabbitmq-data:

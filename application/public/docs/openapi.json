@@ -205,7 +205,7 @@
                                     "sourceLabel"
                                 ],
                                 "properties": {
-                                    "source": {
+                                    "sourceLabel": {
                                         "type": "string"
                                     }
                                 },
