@@ -27,9 +27,7 @@ services:
       - ./application:/app
     depends_on:
       - rabbitmq
-    stdin_open: true
-    tty: true
-    command: composer install --ignore-platform-reqs
+    command: composer install --no-interaction --no-cache
   rabbitmq:
     image: rabbitmq:3.8-management-alpine
     ports:
@@ -37,6 +35,17 @@ services:
       - 127.0.0.1:5672:5672
     volumes:
       - rabbitmq-data:/var/lib/rabbitmq
+  queue-tracker-worker:
+    build:
+      context: ./docker
+      dockerfile: php-cli.docker
+    volumes:
+      - ./application:/app
+    restart: on-failure
+    depends_on:
+      - app-php-cli
+      - rabbitmq
+    command: php /app/bin/console messenger:consume tracker -vv
 
 volumes:
   rabbitmq-data:

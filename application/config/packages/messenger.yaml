@@ -1,0 +1,14 @@
+framework:
+    messenger:
+        transports:
+            tracker :
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
+                options:
+                    exchange:
+                        name: tracker
+                        type: fanout
+                    queues:
+                        tracker: ~
+        routing:
+            App\Message\Tracker: tracker
+

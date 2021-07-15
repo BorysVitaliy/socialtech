@@ -1,7 +1,19 @@
 FROM php:7.4-cli
 
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/bin --filename=composer --quiet
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+
+RUN apt update \
+    && apt install -y zlib1g-dev g++ git libicu-dev zip libzip-dev zip \
+    && docker-php-ext-install intl opcache\
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install zip && \
+    chmod +x /usr/local/bin/install-php-extensions && sync && \
+    install-php-extensions amqp
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
+
+RUN mkdir /app
 
 WORKDIR /app
