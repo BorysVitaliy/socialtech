@@ -14,9 +14,11 @@ class PasswordHasher implements PasswordHasherInterface
     public function hash(string $password): string
     {
         $hash = password_hash($password, PASSWORD_BCRYPT);
+
         if ($hash === false) {
             throw new RuntimeException(self::ERR_MSG_GENERATE_HASH);
         }
+
         return $hash;
     }
 }
