@@ -6,7 +6,7 @@ namespace App\Model\User\Repository;
 
 use App\Model\User\Entity\User;
 use App\Model\User\Repository\Contract\UserRepositoryInterface;
-use App\Model\User\Repository\Hydrator\UserHydratorInterface;
+use App\Model\User\Repository\Hydrator\Contract\UserHydratorInterface;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use Symfony\Component\Serializer\Encoder\DecoderInterface;

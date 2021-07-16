@@ -7,6 +7,7 @@ namespace App\Model\User\Repository\Hydrator;
 use App\Model\User\Entity\Id;
 use App\Model\User\Entity\Name;
 use App\Model\User\Entity\User;
+use App\Model\User\Repository\Hydrator\Contract\UserHydratorInterface;
 use DateTimeImmutable;
 use Exception;
 
