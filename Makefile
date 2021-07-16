@@ -1,7 +1,7 @@
 up: docker-up
 down: docker-down
 restart: docker-down docker-up
-init: env docker-down-clear docker-pull docker-build docker-up perm
+init: env docker-down-clear docker-pull docker-build docker-up perm jwt
 
 docker-up:
 	docker-compose up -d
@@ -27,3 +27,9 @@ perm:
 
 env:
 	cp ./application/.env.example ./application/.env
+
+jwt:
+	mkdir ./application/config/jwt
+	openssl genrsa -out ./application/config/jwt/private.pem -aes256 4096
+	openssl rsa -pubout -in ./application/config/jwt/private.pem -out ./application/config/jwt/public.pem
+	chmod 644 ./application/config/jwt/public.pem ./application/config/jwt/private.pem
