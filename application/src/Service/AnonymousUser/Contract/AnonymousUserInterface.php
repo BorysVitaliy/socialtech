@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Service\AnonymousUser;
+namespace App\Service\AnonymousUser\Contract;
 
 interface AnonymousUserInterface
 {
     public function create(string $ip, string $userAgent): string;
 
-    public function getId(string $uuid): string;
+    public function ensureExistingUuid(string $uuid): void;
 }

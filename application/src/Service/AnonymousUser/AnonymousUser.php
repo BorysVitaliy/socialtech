@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Service\AnonymousUser;
 
+use App\Service\AnonymousUser\Contract\AnonymousUserInterface;
 use App\Service\AnonymousUser\Exception\NotFoundAnonymousUser;
+use App\Service\Hasher\Contract\HasherInterface;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\FilesystemOperator;
 use Psr\Log\LoggerInterface;
@@ -13,23 +15,27 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class AnonymousUser implements AnonymousUserInterface
 {
-    private LoggerInterface $logger;
-
     private FilesystemOperator $anonymousUserStorage;
 
     private SerializerInterface $serializer;
+
+    private HasherInterface $hasher;
+
+    private LoggerInterface $logger;
 
     private string $formatFile;
 
     public function __construct(
         FilesystemOperator $anonymousUserStorage,
         SerializerInterface $serializer,
+        HasherInterface $hasher,
         LoggerInterface $logger,
         string $formatFile
     ) {
-        $this->logger = $logger;
         $this->anonymousUserStorage = $anonymousUserStorage;
         $this->serializer = $serializer;
+        $this->hasher = $hasher;
+        $this->logger = $logger;
         $this->formatFile = $formatFile;
     }
 
@@ -41,9 +47,9 @@ class AnonymousUser implements AnonymousUserInterface
      */
     public function create(string $ip, string $userAgent): string
     {
-        $uuid =  Uuid::fromString(
-            $this->prepareUiidPartsString($ip, $userAgent)
-        )->toString();
+        $uuid =  $this->createUuid($ip, $userAgent);
+
+        $this->anonymousUserStorage->write($this->getAnonymousUserFileName($uuid), $uuid);
 
         $this->logger->info('Anonymous user was succeed created', [
             'id' => $uuid,
@@ -51,18 +57,15 @@ class AnonymousUser implements AnonymousUserInterface
             'userAgent' => $userAgent
         ]);
 
-        $this->anonymousUserStorage->write($this->getAnonymousUserFileName($uuid), $uuid);
-
         return $uuid;
     }
 
     /**
      * @param string $uuid
-     * @return string
      * @throws NotFoundAnonymousUser
      * @throws FilesystemException
      */
-    public function getId(string $uuid): string
+    public function ensureExistingUuid(string $uuid): void
     {
         $userExists = $this->anonymousUserStorage->fileExists(
             $this->getAnonymousUserFileName($uuid)
@@ -71,16 +74,19 @@ class AnonymousUser implements AnonymousUserInterface
         if (!$userExists) {
             throw new NotFoundAnonymousUser($uuid);
         }
-
-        return $uuid;
     }
 
-    private function prepareUiidPartsString(string $ip, string $userAgent): string
+    private function createUuid(string $ip, string $userAgent): string
     {
-        $uuidParts = [$ip, $userAgent, microtime(true)];
+        return Uuid::fromString($this->hashUserData($ip, $userAgent))->toString();
+    }
 
-        return md5(
-            $this->serializer->serialize($uuidParts, $this->formatFile)
+    private function hashUserData(string $ip, string $userAgent): string
+    {
+        $userData = [$ip, $userAgent];
+
+        return $this->hasher->hash(
+            $this->serializer->serialize($userData, $this->formatFile)
         );
     }
 

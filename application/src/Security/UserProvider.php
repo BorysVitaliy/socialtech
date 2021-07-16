@@ -11,8 +11,6 @@ use Symfony\Component\Security\Core\Exception\UserNotFoundException;
 use App\ReadModel\User\UserFetcher;
 use App\ReadModel\User\AuthView;
 
-use function get_class;
-
 class UserProvider implements UserProviderInterface
 {
     private UserFetcher $userFetcher;
@@ -41,11 +39,7 @@ class UserProvider implements UserProviderInterface
      */
     public function refreshUser(UserInterface $identity): UserInterface
     {
-        if (!$identity instanceof User) {
-            throw new UnsupportedUserException('Invalid user class ' . get_class($identity));
-        }
-
-        $user = $this->loadUser($identity->getUsername());
+        $user = $this->loadUser($identity->getUserIdentifier());
 
         return self::identityByUser($user, $identity->getUsername());
     }
@@ -74,7 +68,7 @@ class UserProvider implements UserProviderInterface
         return new User(
             $user->id,
             $username,
-            $user->passwordHash ?: ''
+            $user->passwordHash
         );
     }
 }

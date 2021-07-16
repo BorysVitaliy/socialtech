@@ -6,7 +6,7 @@ namespace App\Controller\Api\Tracker;
 
 use App\Model\User\UseCase\Action\Track\Command;
 use App\Model\User\UseCase\Action\Track\Handler;
-use App\Service\AnonymousUser\AnonymousUserInterface;
+use App\Service\AnonymousUser\Contract\AnonymousUserInterface;
 use OpenApi\Annotations as OA;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -70,11 +70,16 @@ class TrackingController extends AbstractController
      */
     public function track(Request $request, Handler $handler): Response
     {
-        $socialUiidHeader = $request->headers->get('x-social-uuid') ?? '';
+        $socialUuidHeader = $request->headers->get('x-social-uuid') ?? '';
 
-        $userId = $this->getUser()
-            ? $this->getUser()->getId()
-            : $this->anonymousUser->getId($socialUiidHeader);
+        $userId = null;
+
+        if ($this->getUser()) {
+            $userId = $this->getUser()->getUserIdentifier();
+        } else {
+            $userId = $socialUuidHeader;
+            $this->anonymousUser->ensureExistingUuid($userId);
+        }
 
         /** @var Command $command */
         $command = $this->serializer->deserialize(
