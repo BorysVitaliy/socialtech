@@ -30,8 +30,6 @@ class UserProfile extends AbstractController
      *     security={{"bearerAuth": {}, "OAuth2": {}}}
      * )
      * @Route("/api/profile", name="profile", methods={"GET"})
-     * @param UserFetcher $users
-     * @return Response
      */
     public function show(UserFetcher $users): Response
     {

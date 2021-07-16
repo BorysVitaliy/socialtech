@@ -40,7 +40,7 @@ services:
         arguments:
             $createdFormat: '%auth_created_at_format%'
 
-    App\ReadModel\User\UserFetcher:
+    App\ReadModel\User\Mapper\UserViewMapper:
         arguments:
             $dateFormat: '%standard_date_format%'
 

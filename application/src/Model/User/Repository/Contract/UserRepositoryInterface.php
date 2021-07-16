@@ -12,5 +12,5 @@ interface UserRepositoryInterface
 
     public function existNickName(string $nickName): bool;
 
-    public function persist(User $user): void;
+    public function save(User $user): void;
 }

@@ -11,6 +11,10 @@ use Symfony\Component\Process\Process;
 
 class DocsCommand extends Command
 {
+    private const SWAGGER_BIN_PATH = 'vendor/bin/openapi';
+    private const SWAGGER_SOURCE = 'src/Controller';
+    private const SWAGGER_TARGET = 'public/docs/openapi.json';
+
     protected function configure(): void
     {
         $this
@@ -20,11 +24,14 @@ class DocsCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $swagger = 'vendor/bin/openapi';
-        $source = 'src/Controller';
-        $target = 'public/docs/openapi.json';
+        $process = new Process([
+            PHP_BINARY,
+            self::SWAGGER_BIN_PATH,
+            self::SWAGGER_SOURCE,
+            '--output',
+            self::SWAGGER_TARGET
+        ]);
 
-        $process = new Process([PHP_BINARY, $swagger, $source, '--output', $target]);
         $process->run(static function ($type, $buffer) use ($output) {
             $output->write($buffer);
         });

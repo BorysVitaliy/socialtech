@@ -58,7 +58,6 @@ class HomeController extends AbstractController
      *     )
      * )
      * @Route("", name="home", methods={"GET"})
-     * @return Response
      */
     public function home(): Response
     {

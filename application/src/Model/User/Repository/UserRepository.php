@@ -74,7 +74,7 @@ class UserRepository implements UserRepositoryInterface
      * @param User $user
      * @throws FilesystemException
      */
-    public function persist(User $user): void
+    public function save(User $user): void
     {
         $userData = $this->hydrator->extract($user);
         $this->authStorage->write(

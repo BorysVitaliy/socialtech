@@ -67,9 +67,6 @@ class TrackingController extends AbstractController
      *     security={{"bearerAuth": {}, "OAuth2": {}}}
      * )
      * @Route("/api/track", name="track", methods={"POST"})
-     * @param Request $request
-     * @param Handler $handler
-     * @return Response
      */
     public function track(Request $request, Handler $handler): Response
     {

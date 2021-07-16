@@ -57,9 +57,6 @@ class RegistrationController extends AbstractController
      * )
      *
      * @Route("/api/auth/registration", name="auth.registration", methods={"POST"})
-     * @param Request $request
-     * @param Handler $handler
-     * @return Response
      */
     public function request(Request $request, Handler $handler): Response
     {

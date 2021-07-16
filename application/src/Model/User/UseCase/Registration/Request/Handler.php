@@ -48,7 +48,7 @@ class Handler
             $this->hasher->hash($command->password)
         );
 
-        $this->users->persist($user);
+        $this->users->save($user);
 
         $this->logger->info(
             sprintf(self::PATTERN_MSG_SUCCEED_CREATED, $user->getNickName())
