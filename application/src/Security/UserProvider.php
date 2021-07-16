@@ -41,7 +41,7 @@ class UserProvider implements UserProviderInterface
     {
         $user = $this->loadUser($identity->getUserIdentifier());
 
-        return self::identityByUser($user, $identity->getUsername());
+        return self::identityByUser($user, $identity->getUserIdentifier());
     }
 
     public function supportsClass($class): bool
