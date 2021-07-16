@@ -5,7 +5,13 @@ This application based on the Symfony framework
 
 ### Install
 
+##### If you have the utilities Makefile, you can init the application with one command
 
+```bash
+make init
+Enter pass phrase for config/jwt/private.pem to .env
+```
+###or
 ```bash
 1. cp ./application/.env.example ./application/.env
 2. docker-compose build
@@ -16,13 +22,6 @@ This application based on the Symfony framework
 7. chmod 644 ./application/config/jwt/public.pem ./application/config/jwt/private.pem
 8. Enter pass phrase for config/jwt/private.pem to .env
 9. sudo chmod -R 755 ./application/var/storage/
-```
-
-##### After installing the utilities Makefile, you can init the application with one command
-
-```bash
-make init
-Enter pass phrase for config/jwt/private.pem to .env
 ```
 
 
