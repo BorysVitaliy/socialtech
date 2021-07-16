@@ -42,6 +42,7 @@ class TrackingController extends AbstractController
      * @OA\Post(
      *     path="/track",
      *     tags={"Tracker"},
+     *     summary="Track user action on site or application",
      *     @OA\RequestBody(
      *         @OA\JsonContent(
      *             type="object",

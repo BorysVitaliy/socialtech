@@ -16,6 +16,7 @@ class UserProfile extends AbstractController
      * @OA\Get(
      *     path="/profile",
      *     tags={"Profile"},
+     *     summary="Get information about user profile",
      *     @OA\Response(
      *         response=200,
      *         description="Success response",

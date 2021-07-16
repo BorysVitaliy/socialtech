@@ -24,6 +24,9 @@ class AnonymousCreatorController extends AbstractController
      * @OA\Get(
      *     path="/anonymous/create",
      *     tags={"Auth"},
+     *     summary="Generation uuid for unauthorized user",
+     *     description="Required to identify an unauthorized user.
+                        This token must be passed in all subsequent requests in the header with the name x-social-uuid",
      *     @OA\Response(
      *         response=201,
      *         description="Success response",

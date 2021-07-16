@@ -34,6 +34,7 @@ class RegistrationController extends AbstractController
      * @OA\Post(
      *     path="/auth/registration",
      *     tags={"Auth"},
+     *     summary="User registration",
      *     @OA\RequestBody(
      *         @OA\JsonContent(
      *             type="object",
@@ -86,6 +87,7 @@ class RegistrationController extends AbstractController
      * @OA\Post(
      *     path="/login_check",
      *     tags={"Auth"},
+     *     summary="Authorization in the system",
      *     @OA\RequestBody(
      *         @OA\JsonContent(
      *             type="object",
