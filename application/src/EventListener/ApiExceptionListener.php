@@ -25,11 +25,12 @@ class ApiExceptionListener
         $request = $requestEvent->getRequest();
         $requestMethod = $request->getMethod();
         $requestContent = $request->getContent();
+        $ip = $request->getClientIp();
 
         $this->logger->info(
             'Request',
             [
-                'ip' => $request->getClientIp(),
+                'ip' => $ip,
                 'method' => $requestMethod,
                 'content' => serialize($requestContent)
             ]

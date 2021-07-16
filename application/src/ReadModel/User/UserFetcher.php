@@ -45,6 +45,11 @@ class UserFetcher
         return $user;
     }
 
+    /**
+     * @param string $userName
+     * @throws NotFoundException
+     * @return User
+     */
     private function ensureExistingUser(string $userName): User
     {
         $userEntity = $this->repository->getByNickName($userName);

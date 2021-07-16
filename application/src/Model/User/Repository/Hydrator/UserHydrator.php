@@ -38,10 +38,6 @@ class UserHydrator implements UserHydratorInterface
         );
     }
 
-    /**
-     * @param User $user
-     * @return array
-     */
     public function extract(User $user): array
     {
         return [

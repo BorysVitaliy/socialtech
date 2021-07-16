@@ -59,6 +59,7 @@ class AnonymousUser implements AnonymousUserInterface
     /**
      * @param string $uuid
      * @return string
+     * @throws NotFoundAnonymousUser
      * @throws FilesystemException
      */
     public function getId(string $uuid): string

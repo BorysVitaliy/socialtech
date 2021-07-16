@@ -34,6 +34,11 @@ class UserProvider implements UserProviderInterface
         return self::identityByUser($user, $username);
     }
 
+    /**
+     * @param UserInterface $identity
+     * @throws UnsupportedUserException
+     * @return UserInterface
+     */
     public function refreshUser(UserInterface $identity): UserInterface
     {
         if (!$identity instanceof User) {
@@ -50,6 +55,11 @@ class UserProvider implements UserProviderInterface
         return $class === User::class;
     }
 
+    /**
+     * @param $username
+     * @throws UserNotFoundException
+     * @return AuthView
+     */
     private function loadUser($username): AuthView
     {
         if ($user = $this->userFetcher->findForAuthByUserName($username)) {
