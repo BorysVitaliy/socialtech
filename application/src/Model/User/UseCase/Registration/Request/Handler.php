@@ -11,6 +11,7 @@ use App\Model\User\Repository\Contract\UserRepositoryInterface;
 use App\Model\User\Service\Contract\PasswordHasherInterface;
 use DateTimeImmutable;
 use DomainException;
+use Exception;
 use Psr\Log\LoggerInterface;
 
 class Handler
@@ -31,13 +32,18 @@ class Handler
         $this->logger = $logger;
     }
 
+    /**
+     * @param Command $command
+     * @throws Exception
+     * @throws DomainException
+     */
     public function handle(Command $command): void
     {
         if ($this->users->existNickName($command->nickName)) {
             throw new DomainException('User already exists.');
         }
 
-        $user = User::create(
+        $user = new User(
             Id::next(),
             $command->nickName,
             new DateTimeImmutable(),

@@ -44,7 +44,7 @@ class UserFetcher
      */
     private function ensureExistingUser(string $userName): User
     {
-        $userEntity = $this->repository->getByNickName($userName);
+        $userEntity = $this->repository->findByNickName($userName);
 
         if (!$userEntity) {
             throw new NotFoundException('User is not found');

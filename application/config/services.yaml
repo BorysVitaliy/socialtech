@@ -32,7 +32,7 @@ services:
             - { name: kernel.event_listener, event: kernel.exception }
             - { name: kernel.event_listener, event: kernel.request }
 
-    App\Model\User\Repository\UserRepository:
+    App\Model\User\Storage\UserFileStorage:
         arguments:
             $formatFile: '%format_auth_file%'
 
@@ -48,13 +48,15 @@ services:
         arguments:
             $formatFile: '%format_auth_file%'
 
-    App\Queue\Consumer\User\TrackActionHandler:
+    App\Model\User\Storage\SocialTechStorage:
         arguments:
             $trackStoragePath: '%track_storage_path%'
-            $formatStorage :  '%format_track_storage_file%'
+            $dataFormat :  '%format_track_storage_file%'
             $trackElementDelimiter: ','
 
     SocialTech\StorageInterface:
         autowire: true
         class: SocialTech\SlowStorage
+
+    App\Queue\Consumer\User\TrackActionHandler: ~
 

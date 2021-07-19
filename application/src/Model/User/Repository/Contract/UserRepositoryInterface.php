@@ -8,7 +8,7 @@ use App\Model\User\Entity\User;
 
 interface UserRepositoryInterface
 {
-    public function getByNickName(string $nickName): ?User;
+    public function findByNickName(string $nickName): ?User;
 
     public function existNickName(string $nickName): bool;
 

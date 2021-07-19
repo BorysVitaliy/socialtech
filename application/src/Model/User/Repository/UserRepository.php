@@ -7,88 +7,41 @@ namespace App\Model\User\Repository;
 use App\Model\User\Entity\User;
 use App\Model\User\Repository\Contract\UserRepositoryInterface;
 use App\Model\User\Repository\Hydrator\Contract\UserHydratorInterface;
-use League\Flysystem\FilesystemException;
-use League\Flysystem\FilesystemOperator;
-use Symfony\Component\Serializer\Encoder\DecoderInterface;
-use Symfony\Component\Serializer\SerializerInterface;
+use App\Model\User\Storage\Contract\UserStorageInterface;
 
 class UserRepository implements UserRepositoryInterface
 {
-    private const PATTERN_FILE_AUTH = '%s.%s';
-
     private UserHydratorInterface $hydrator;
 
-    private FilesystemOperator $authStorage;
-
-    private SerializerInterface $serializer;
-
-    private DecoderInterface $decoder;
-
-    private string $format;
+    private UserStorageInterface $storage;
 
     public function __construct(
-        FilesystemOperator $authStorage,
-        UserHydratorInterface $hydrator,
-        SerializerInterface $serializer,
-        DecoderInterface $decoder,
-        string $formatFile
+        UserStorageInterface $storage,
+        UserHydratorInterface $hydrator
     ) {
         $this->hydrator = $hydrator;
-        $this->authStorage = $authStorage;
-        $this->serializer = $serializer;
-        $this->decoder = $decoder;
-        $this->format = $formatFile;
+        $this->storage = $storage;
     }
 
-    /**
-     * @param string $nickName
-     * @return User|null
-     * @throws FilesystemException
-     */
-    public function getByNickName(string $nickName): ?User
+    public function findByNickName(string $nickName): ?User
     {
-        if (!$this->existNickName($nickName)) {
+        if (!$this->storage->exist($nickName)) {
             return null;
         }
 
-        $userData = $this->authStorage->read(
-            $this->getUserFileName($nickName)
+        return $this->hydrator->hydrate(
+            $this->storage->get($nickName)
         );
-
-        $data = $this->decoder->decode($userData, $this->format);
-
-        return $this->hydrator->hydrate($data);
     }
 
-    /**
-     * @param string $nickName
-     * @return bool
-     * @throws FilesystemException
-     */
     public function existNickName(string $nickName): bool
     {
-        return $this->authStorage->fileExists($this->getUserFileName($nickName));
+        return $this->storage->exist($nickName);
     }
 
-    /**
-     * @param User $user
-     * @throws FilesystemException
-     */
     public function save(User $user): void
     {
         $userData = $this->hydrator->extract($user);
-        $this->authStorage->write(
-            $this->getUserFileName($user->getNickName()),
-            $this->serializer->serialize($userData, $this->format)
-        );
-    }
-
-    private function getUserFileName(string $nickName): string
-    {
-        return sprintf(
-            self::PATTERN_FILE_AUTH,
-            $nickName,
-            $this->format
-        );
+        $this->storage->store($user->getNickName(), $userData);
     }
 }
