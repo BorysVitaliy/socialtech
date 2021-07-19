@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Queue\Message\Message;
 
 use DateTimeImmutable;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class TrackAction
 {
