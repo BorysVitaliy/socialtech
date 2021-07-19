@@ -37,7 +37,7 @@ class Handler
             throw new DomainException('User already exists.');
         }
 
-        $user = new User(
+        $user = User::create(
             Id::next(),
             $command->nickName,
             new DateTimeImmutable(),

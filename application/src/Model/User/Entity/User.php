@@ -18,7 +18,7 @@ class User
 
     private string $passwordHash;
 
-    public function __construct(
+    private function __construct(
         Id $id,
         string $nickName,
         DateTimeImmutable $createdAt,
@@ -30,6 +30,16 @@ class User
         $this->createdAt = $createdAt;
         $this->name = $name;
         $this->passwordHash = $passwordHash;
+    }
+
+    public static function create(
+        Id $id,
+        string $nickName,
+        DateTimeImmutable $createdAt,
+        Name $name,
+        string $passwordHash
+    ): self {
+        return new self($id, $nickName, $createdAt, $name, $passwordHash);
     }
 
     public function getId(): Id
