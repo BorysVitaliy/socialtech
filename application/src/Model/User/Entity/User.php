@@ -47,7 +47,7 @@ class User
         return $this->createdAt;
     }
 
-    public function getPasswordHash(): ?string
+    public function getPasswordHash(): string
     {
         return $this->passwordHash;
     }

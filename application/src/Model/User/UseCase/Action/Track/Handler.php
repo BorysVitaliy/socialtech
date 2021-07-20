@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Model\User\UseCase\Action\Track;
 
-use App\Queue\Message\Message\TrackAction;
+use App\Queue\Message\User\TrackAction;
 use DateTimeImmutable;
 use Symfony\Component\Messenger\MessageBusInterface;
 

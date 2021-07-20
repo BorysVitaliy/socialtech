@@ -6,10 +6,10 @@ namespace App\Queue\Consumer\User;
 
 use App\Model\User\Storage\Contract\TrackerStorageInterface;
 use Psr\Log\LoggerInterface;
-use App\Queue\Message\Message\TrackAction;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 use Symfony\Component\Serializer\Exception\ExceptionInterface;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use App\Queue\Message\User\TrackAction;
 
 class TrackActionHandler implements MessageHandlerInterface
 {

@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Queue\Message\Message;
+namespace App\Queue\Message\User;
+
+namespace App\Queue\Message\User;
 
 use DateTimeImmutable;
 

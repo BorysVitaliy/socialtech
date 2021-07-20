@@ -72,8 +72,6 @@ class TrackingController extends AbstractController
     {
         $socialUuidHeader = $request->headers->get('x-social-uuid') ?? '';
 
-        $userId = null;
-
         if ($this->getUser()) {
             $userId = $this->getUser()->getUserIdentifier();
         } else {
