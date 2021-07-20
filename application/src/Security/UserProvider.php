@@ -25,7 +25,7 @@ class UserProvider implements UserProviderInterface
         return $this->loadUserByUsername($identifier);
     }
 
-    public function loadUserByUsername($username): UserInterface
+    public function loadUserByUsername(string $username): UserInterface
     {
         $user = $this->loadUser($username);
 
@@ -44,17 +44,17 @@ class UserProvider implements UserProviderInterface
         return self::identityByUser($user, $identity->getUserIdentifier());
     }
 
-    public function supportsClass($class): bool
+    public function supportsClass(string $class): bool
     {
         return $class === User::class;
     }
 
     /**
-     * @param $username
+     * @param string $username
      * @throws UserNotFoundException
      * @return AuthView
      */
-    private function loadUser($username): AuthView
+    private function loadUser(string $username): AuthView
     {
         if ($user = $this->userFetcher->findForAuthByUserName($username)) {
             return $user;
